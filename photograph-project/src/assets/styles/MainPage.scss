@@ -1,9 +1,12 @@
 @import "./variable";
 
 .main{
-    height: 600px;
-    // max-width: 1100px;    
+    height: 80vh;
+    //  max-width: 1100px;
+    // min-width: 300px; 
+    // overflow-y: hidden;   
     background-color: $MainPage-color;
+    margin-top: 80px;
 .headerSpan{
     color: $headerspanColor;
     z-index: 2;
@@ -24,7 +27,8 @@
 }
 .header{
     font-size: 50px;
-    color:$text-color
+    color:$text-color;
+    // line-height: 30px;;
 }
 .SearchInput{
     z-index: 2;
@@ -47,7 +51,7 @@
     &::-webkit-search-cancel-button{
         
             
-        
+        cursor: pointer;
     }
     button{
         background-color: $searchbutton-color;
@@ -61,5 +65,25 @@
         
     }
     
+    @media (max-width: 450px) {
+        .main{
+            width: 90%;
+            margin: 0 10px ;
+            .header{
+               
+            }
+        }
+
+    }
 }
+@media (max-width: $breakpoint-tablet) {
+    .headerWrapper{
+        margin-top:20px !important;
+        margin-bottom:20px !important;
+        .header{
+            font-size: 30px;
+        }
+    }
+}
+
 }

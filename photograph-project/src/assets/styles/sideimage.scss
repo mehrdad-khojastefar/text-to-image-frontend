@@ -26,4 +26,14 @@
         @include mainImage(250px)
     }
 }
+@media (max-width: $breakpoint-tablet) {
+    .imageWrapper4{
+        @include imageWrapper(-26px,-62px,200px);
+        
+        .mainImage4{
+            @include mainImage(200px)
+        }
+    }
+    
+}
 
