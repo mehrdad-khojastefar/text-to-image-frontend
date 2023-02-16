@@ -18,10 +18,10 @@ const MainPage = () => {
     console.log(header1firstarray);
     console.log(header1secondarray);
   return (
-    <Container className="main rounded-5 m-auto p-5 position-relative">
+    <Container className="main rounded-5 my-5 p-5 position-relative">
       <Row className="d-flex flex-nowrap m-auto">
-        <Col xs={12} md={7} className="mt-md-3 ps-md-5 ">
-          <span className="headerSpan ">{headerSpan}</span>
+        <Col xs={12} sm={12} md={8} className="mt-md-3 ps-md-5 ">
+          <span className="headerSpan position-relative">{headerSpan}</span>
 
             <Col xs={12} className="mt-5 ps-2 position-relative" style={{zIndex:"2"}}>
 
@@ -29,7 +29,8 @@ const MainPage = () => {
           <h1 className="header">{header1secondarray}</h1>
             </Col>
             <Col xs={12} md={6} className="mt-md-4 ps-3">
-            <p>{MainPageText}</p>
+            <p className="position-relative" style={{zIndex:"2"
+            }}>{MainPageText}</p>
             </Col>
           <Col xs={12} md={12} className="SearchInput position-relative rounded-pill  ">
             <input
@@ -43,7 +44,7 @@ const MainPage = () => {
               </button>
           </Col>
         </Col>
-        <Col xs={12} md={5} className="mt-md-5 ps-md-5">
+        <Col xs={12} md={4} sm={12} className="mt-md-5 ps-md-5">
         <SideImages/>
             
         </Col>

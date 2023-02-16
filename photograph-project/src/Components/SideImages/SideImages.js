@@ -7,11 +7,11 @@ import "../../assets/styles/sideimage.scss";
 const SideImages = () => {
   return (
     <div className="d-flex flex-wrap ">
-      <div className="imageWrapper1 d-none d-lg-block">
+      <div className="imageWrapper1 d-none d-xl-block">
         <Image className="mainImage1" fluid src={duck} />
       </div>
 
-      <div className="imageWrapper2 ">
+      <div className="imageWrapper2 d-none d-lg-block">
         <Image className="mainImage2" fluid src={duck} />
       </div>
       <div className="imageWrapper3 ">

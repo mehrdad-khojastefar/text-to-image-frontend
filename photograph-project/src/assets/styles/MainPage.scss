@@ -6,6 +6,7 @@
     background-color: $MainPage-color;
 .headerSpan{
     color: $headerspanColor;
+    z-index: 2;
     font: {
         size:18px;
         weight:bold
