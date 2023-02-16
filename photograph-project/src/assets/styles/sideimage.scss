@@ -1,0 +1,29 @@
+@import "./mixins";
+@import "./variable";
+.imageWrapper1{
+    @include imageWrapper(513px,77px , 200px);
+    .mainImage1{
+        @include mainImage(200px)
+    }
+}
+.imageWrapper2{
+    @include imageWrapper(130px,155px,380px);
+    .mainImage2{
+        @include mainImage(380px)
+    }
+}
+.imageWrapper3{
+    @include imageWrapper(-66px,395px,170px);
+    
+    .mainImage3{
+        @include mainImage(170px)
+    }
+}
+.imageWrapper4{
+    @include imageWrapper(-26px,-62px,250px);
+    
+    .mainImage4{
+        @include mainImage(250px)
+    }
+}
+

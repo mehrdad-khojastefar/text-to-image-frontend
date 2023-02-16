@@ -1,0 +1,17 @@
+@mixin imageWrapper($right, $top:0 , $size) {
+    overflow: hidden;
+    position: absolute;
+    right: $right;
+    top: $top;
+    width: $size;
+    height: $size;
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    border-radius: 50px;
+  }
+  @mixin mainImage($size){
+    height:$size ;
+    width: $size;
+    transform: rotate(-45deg) scale(1.4);
+  }
