@@ -12,7 +12,7 @@ import PicModal from "../Modal/PicModal";
 
 const MainPage = () => {
   const [searchvalue, setSearchvalue] = useState("");
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
 
   const { headerSpan, header, MainPageText, SearchInPutPlaceHolder, MainLink } =
     messages;

@@ -5,7 +5,7 @@
 .modal-content{
 border: none;
 padding: 10px;
-background: linear-gradient(360deg, rgb(1, 40, 45) 0%, hsla(176, 36%, 38%, 1) 100%, hsla(177, 37%, 37%, 1) 100%);
+background: linear-gradient(360deg, $modal-bgc 0%, $modal-bgc2 100%, $modal-bgc3 100%);
 
 .modalHeader{
     padding: 0;

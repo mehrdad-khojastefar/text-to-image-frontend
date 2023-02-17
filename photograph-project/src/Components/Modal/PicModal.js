@@ -8,18 +8,28 @@ import duck from "../../assets/images/Duck-in-pond.jpg";
 //icon
 import svg from "../../assets/icons/search-magnifier-outline-svgrepo-com.svg";
 const PicModal = (props) => {
-  const { text , show } = props;
+  const { text } = props;
   const [newSearch, SetnewSearch] = useState(text);
   const [newInput, setNewinput] = useState(text);
+  const [imageLink,setImageLink]=useState("")
+
   useEffect(() => {
-    //axios.get
-  }, );
+    const fetchAPi =async () => {
+      const response = axios.get("");
+      setImageLink(response.data)
+      
+    };
+    fetchAPi();
+  }, [newSearch] );
   console.log(newSearch);
-  const renderImage = () => {
+
+  const fetchAPi =async () => {
     const response = axios.get("");
   };
-  const { setSearchvalue } = props;
-  
+  async function getText(text){
+    const getTexed=await text;
+    return getTexed;
+  }
   return (
     <Modal
       className="MainModal"
