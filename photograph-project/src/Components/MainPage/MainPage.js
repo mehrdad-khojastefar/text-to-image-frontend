@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //React-bootstrap
 import { Col, Container, Row } from "react-bootstrap";
 //messages
@@ -12,7 +12,7 @@ import PicModal from "../Modal/PicModal";
 
 const MainPage = () => {
   const [searchvalue, setSearchvalue] = useState("");
-  const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(true);
 
   const { headerSpan, header, MainPageText, SearchInPutPlaceHolder, MainLink } =
     messages;
@@ -24,6 +24,19 @@ const MainPage = () => {
     " ",
     header1[4]
   );
+  const enterchangehandler=async (event)=>{
+    
+    if(event.key === 'Enter'){
+    await  setSearchvalue(event.target.value);
+      searchvalue && setModalShow(true);
+
+      event.target.value=""
+  }
+}
+  useEffect(()=>{
+
+  },[searchvalue])
+ 
   return (
     <Container className="main rounded-5 mb-5 p-5 position-relative">
       <Row className="d-flex flex-nowrap m-auto">
@@ -45,17 +58,30 @@ const MainPage = () => {
           <Col
             xs={12}
             md={12}
+            lg={9}
             className="SearchInput position-relative rounded-pill  "
           >
             <input
               className="SearchInput"
               placeholder={SearchInPutPlaceHolder}
               type="search"
-              onChange={(e) => setSearchvalue(e.target.value)}
+              onChange={(e) => {
+                setSearchvalue(e.target.value)
+              }}
+              onKeyDown={enterchangehandler}
+                // if(event.key === 'Enter'){
+                //   setSearchvalue(event.target.value);
+                //   searchvalue && setModalShow(true);
+
+                //   event.target.value=""
+                // }
+              
             />
             <button
-              onClick={() => {
-                searchvalue && setModalShow(true);
+              onClick={async() => {
+               await searchvalue && setModalShow(true);
+                console.log(searchvalue);
+                
               }}
             >
               <img src={svg} alt="searchIcon" />

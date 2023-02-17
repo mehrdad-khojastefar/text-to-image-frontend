@@ -1,0 +1,150 @@
+@import "./variable";
+.MainModal{
+
+
+.modal-content{
+border: none;
+padding: 10px;
+background: linear-gradient(360deg, rgb(1, 40, 45) 0%, hsla(176, 36%, 38%, 1) 100%, hsla(177, 37%, 37%, 1) 100%);
+
+.modalHeader{
+    padding: 0;
+    border: none;
+        .btn-close{
+            position: absolute;
+            right: -21px;
+            background-color: white;
+            opacity: 0.5;
+            top: -21px;
+            z-index: 20;
+            &:focus-visible{
+                outline: none;
+                border: none;
+            }
+            &:focus{
+                box-shadow: none;
+            }
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+        @media ( max-width: 776px) {
+            .btn-close{
+                width: 5px;
+                height: 5px;
+                top: 0;
+                right: 0;
+                font-size: 9px;
+            }
+
+        }
+
+}
+.modalbody{
+    height: 80vh;
+    position:relative;
+    padding: 0;
+    border: none;
+    .info{
+        // position: absolute;
+        // top: 0;
+        // left: -1px;
+        margin: 0;
+        height: 80vh;
+        // background: linear-gradient(360deg, hsla(187, 96%, 9%, 1) 0%, hsla(176, 36%, 38%, 1) 100%, hsla(177, 37%, 37%, 1) 100%);
+       border-radius: 5px 0 0 5px; 
+       //    border-radius: inherit;
+       .infoText{
+        color: #fff ;
+       }
+       .SearchInput{
+        z-index: 2;
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 20px;
+        background-color: #fff;
+    
+        input{
+            
+            background-color: #fff;
+            padding: 10px 5px 10px 30px;
+            overflow-x: scroll;
+            width: 92%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+        &::-webkit-search-cancel-button{
+            
+                
+            cursor: pointer;
+        }
+        button{
+            margin-right: 2px;
+            background-color: $searchbutton-color;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:focus-visible{
+                outline: none;
+            }
+        }
+        
+        @media (max-width: 450px) {
+            .main{
+                width: 90%;
+                margin: 0 10px ;
+                .header{
+                   
+                }
+            }
+    
+        }
+    }
+    }
+       .image-container{
+        min-height: 300px;
+        background: linear-gradient(360deg, hsla(187, 96%, 9%, 1) 0%, hsla(176, 36%, 38%, 1) 100%, hsla(177, 37%, 37%, 1) 100%);
+           height: 80vh;
+           margin: 0;
+           padding: 0;
+        border-radius: 5PX;
+        .searchedImage{
+            border-radius: 5px;
+            object-fit: cover;
+
+            width: 100%;
+            margin: 0;
+            height: 100%;
+            
+        }
+        
+    }
+
+           @media ( max-width: 994px) {
+               .info{
+                //    background-color: green !important; 
+                height: 20vh; 
+                border-radius: 0 0 5px 5px;   
+               }
+               .image-container{
+                   height: 60vh;
+                   border-radius:5px 5px  0 0 ; 
+                   .searchedImage{
+
+                    border-radius:  5px 5px 0 0;
+                    
+                }  
+
+                
+            }
+               }        
+        }  
+    }
+}

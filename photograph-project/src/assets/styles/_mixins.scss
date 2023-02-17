@@ -12,6 +12,8 @@
     transition: display 5s ease;
   }
   @mixin mainImage($size){
+    object-fit: cover;
+
     height:$size ;
     width: $size;
     transform: rotate(-45deg) scale(1.4);
