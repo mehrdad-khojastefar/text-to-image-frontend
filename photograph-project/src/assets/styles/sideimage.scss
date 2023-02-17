@@ -5,6 +5,11 @@
     .mainImage1{
         @include mainImage(200px)
     }
+    @media screen and (max-width: 1400px) {
+        display: none !important;
+        
+    }
+ 
 }
 .imageWrapper2{
     @include imageWrapper(130px,155px,380px);
@@ -18,12 +23,19 @@
     .mainImage3{
         @include mainImage(170px)
     }
+   
 }
 .imageWrapper4{
     @include imageWrapper(-26px,-62px,250px);
     
     .mainImage4{
         @include mainImage(250px)
+    }
+    @media screen and (max-width:400px ){
+        right: -47px !important;
+        top: -87px !important;
+    
+        
     }
 }
 @media (max-width: $breakpoint-tablet) {

@@ -26,9 +26,17 @@
     }
 }
 .header{
-    font-size: 50px;
+    font-size: 43px;
     color:$text-color;
     // line-height: 30px;;
+    @media screen and (max-width:400px ){
+
+        
+    }
+}
+.mainText{
+    color: $mainp-color;
+
 }
 .SearchInput{
     z-index: 2;
@@ -38,7 +46,13 @@
     align-items: center;
     border-radius: 20px;
     background-color: #fff;
-
+    @media screen and (max-width: 400px){
+        padding-left:7px !important   ;
+        color: $text-color;
+        &::placeholder{
+            // font-size: 14px;
+        }
+    }
     input{
         background-color: #fff;
         padding: 10px 5px 10px 30px;
@@ -47,11 +61,13 @@
         height: 100%;
         border: none;
         outline: none;
-    }
-    &::-webkit-search-cancel-button{
-        
+        &::-webkit-search-cancel-button{
             
-        cursor: pointer;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 400px){
+            margin-left:0  !important   ;
+        }
     }
     button{
         background-color: $searchbutton-color;
@@ -62,20 +78,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
+        &:focus-visible{
+            outline: none;
+        }
+        @media screen and (max-width: 400px){
+            margin-right: 5px ;
+        }
     }
-    
-    @media (max-width: 450px) {
-        .main{
-            width: 90%;
-            margin: 0 10px ;
+    @media screen and (max-width: $breakpoint-lg) {
+        .headerWrapper{
+            
             .header{
-               
+                font-size:40px !important;
             }
         }
-
     }
+
 }
+
 @media (max-width: $breakpoint-tablet) {
     .headerWrapper{
         margin-top:20px !important;
@@ -85,5 +105,6 @@
         }
     }
 }
+
 
 }

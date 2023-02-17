@@ -24,34 +24,31 @@ const MainPage = () => {
     " ",
     header1[4]
   );
-  const enterchangehandler=async (event)=>{
-    
-    if(event.key === 'Enter'){
-    await  setSearchvalue(event.target.value);
+  const enterchangehandler = async (event) => {
+    if (event.key === "Enter") {
+      await setSearchvalue(event.target.value);
       searchvalue && setModalShow(true);
 
-      event.target.value=""
-  }
-}
-  useEffect(()=>{
+      event.target.value = "";
+    }
+  };
+  useEffect(() => {}, [searchvalue]);
 
-  },[searchvalue])
- 
   return (
     <Container className="main rounded-5 mb-5 p-5 position-relative">
-      <Row className="d-flex flex-nowrap m-auto">
-        <Col xs={12} sm={12} md={8} className="mt-md-3 ps-md-5 ">
+      <Row className="d-flex flex-nowrap ">
+        <Col xs={12} sm={12} md={8} lg={8} className="mt-md-3 ps-md-5 ">
           <span className="headerSpan position-relative">{headerSpan}</span>
           <Col
-            xs={12}
-            className="headerWrapper mt-5 ps-2 position-relative"
+           sm={12} xs={12} md={12} lg={9} xl={7}
+            className="headerWrapper mt-5 pt-2 pt-md-0  ps-2 position-relative"
             style={{ zIndex: "2" }}
           >
-            <h1 className="header">{header1firstarray}</h1>
-            <h1 className="header">{header1secondarray}</h1>
+            <h1 className="header mt-5">{header}</h1>
+            
           </Col>
-          <Col xs={12} md={6} className="mt-md-4 ps-3">
-            <p className="position-relative" style={{ zIndex: "2" }}>
+          <Col xs={12} md={12} lg={6} className="my-4 ps-3">
+            <p className="position-relative mainText" style={{ zIndex: "2" }}>
               {MainPageText}
             </p>
           </Col>
@@ -65,23 +62,22 @@ const MainPage = () => {
               className="SearchInput"
               placeholder={SearchInPutPlaceHolder}
               type="search"
+              spellCheck="false"
               onChange={(e) => {
-                setSearchvalue(e.target.value)
+                setSearchvalue(e.target.value);
               }}
               onKeyDown={enterchangehandler}
-                // if(event.key === 'Enter'){
-                //   setSearchvalue(event.target.value);
-                //   searchvalue && setModalShow(true);
+              // if(event.key === 'Enter'){
+              //   setSearchvalue(event.target.value);
+              //   searchvalue && setModalShow(true);
 
-                //   event.target.value=""
-                // }
-              
+              //   event.target.value=""
+              // }
             />
             <button
-              onClick={async() => {
-               await searchvalue && setModalShow(true);
+              onClick={async () => {
+                (await searchvalue) && setModalShow(true);
                 console.log(searchvalue);
-                
               }}
             >
               <img src={svg} alt="searchIcon" />
