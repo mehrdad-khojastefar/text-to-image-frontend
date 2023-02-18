@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 //React-bootstrap
 import { Col, Container, Row } from "react-bootstrap";
 //messages
@@ -9,12 +9,17 @@ import "../../assets/styles/MainPage.scss";
 import svg from "../../assets/icons/search-magnifier-outline-svgrepo-com.svg";
 import SideImages from "../SideImages/SideImages";
 import PicModal from "../Modal/PicModal";
+//Context
+import { PictureContext } from "../../Context/PictureContextProvider";
 
 const MainPage = () => {
   const [searchvalue, setSearchvalue] = useState("");
   const [apinput, setapiinput] = useState("");
   const [defaultvalue, setDefaultValue] = useState("");
   const [modalShow, setModalShow] = useState(false);
+
+  //Context
+  const {setPicture,picture}=useContext(PictureContext)
 
   const { headerSpan, header, MainPageText, SearchInPutPlaceHolder, MainLink } =
     messages;
@@ -29,10 +34,8 @@ const MainPage = () => {
   };
   useEffect(() => {
     setapiinput(searchvalue);
-  }, [searchvalue]);
-  const setapichage = async (searchvalue) => {
-    await setapiinput(searchvalue);
-  };
+    // setPicture("")
+  }, [searchvalue,picture]);
   const input = useRef(null);
 
   return (
@@ -100,7 +103,13 @@ const MainPage = () => {
       {modalShow && (
         <PicModal
           show={modalShow}
-          onHide={() => setModalShow(false)}
+          onHide={() =>{
+           setModalShow(false);
+           setPicture("");
+           console.log("hide");
+           console.log(picture)
+          
+          }}
           text={apinput}
         />
       )}

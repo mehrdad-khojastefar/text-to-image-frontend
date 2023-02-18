@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Modal, Col, Row, Container, Image } from "react-bootstrap";
 import axios from "axios";
 import "../../assets/styles/modal.scss";
-//test image
-import duck from "../../assets/images/Duck-in-pond.jpg";
-
+//loader
+import loader from "../../assets/images/Eclipse-1s-200px.gif"
 //icon
 import svg from "../../assets/icons/search-magnifier-outline-svgrepo-com.svg";
 import { getData } from "../../Services/api";
+//Context
+import { PictureContext } from "../../Context/PictureContextProvider";
 const PicModal = (props) => {
   const { text } = props;
-  // const [newSearch, SetnewSearch] = useState(text);
-  // const [newInput, setNewinput] = useState(text);
+  const {picture,setPicture}=useContext(PictureContext)
+
+
   const [imageLink, setImageLink] = useState("");
 
   useEffect(() => {
     const fetchAPi = async () => {
       
-      setImageLink(await getData(text));
+      console.log(picture)
+      setPicture(await getData(text));
       console.log("connected");
-      console.log(imageLink);
     };
     // !imageLink && 
     fetchAPi();
-  }, [text]);
+  }, []);
   // console.log(newSearch);
-console.log(imageLink)
   return (
     <Modal
       className="MainModal"
@@ -44,7 +45,7 @@ console.log(imageLink)
               xs={{ order: "first", span: 12 }}
               lg={{ order: "last", span: 7 }}
             >
-              <Image className="searchedImage" fluid src={imageLink} />
+              <Image className="searchedImage" fluid src={picture ? picture : loader } />
             </Col>
             <Col
               xs={12}
