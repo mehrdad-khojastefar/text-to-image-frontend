@@ -19,7 +19,7 @@ const MainPage = () => {
   const [modalShow, setModalShow] = useState(false);
 
   //Context
-  const {setPicture,picture}=useContext(PictureContext)
+  const { setPicture, picture } = useContext(PictureContext);
 
   const { headerSpan, header, MainPageText, SearchInPutPlaceHolder, MainLink } =
     messages;
@@ -30,12 +30,13 @@ const MainPage = () => {
       searchvalue && setModalShow(true);
       console.log(apinput);
       event.target.value = "";
+      
     }
   };
   useEffect(() => {
     setapiinput(searchvalue);
     // setPicture("")
-  }, [searchvalue,picture]);
+  }, [searchvalue, picture]);
   const input = useRef(null);
 
   return (
@@ -103,12 +104,12 @@ const MainPage = () => {
       {modalShow && (
         <PicModal
           show={modalShow}
-          onHide={() =>{
-           setModalShow(false);
-           setPicture("");
-           console.log("hide");
-           console.log(picture)
-          
+          onHide={() => {
+            setModalShow(false);
+            setPicture("");
+            setSearchvalue("")
+            console.log("hide");
+            console.log(picture);
           }}
           text={apinput}
         />

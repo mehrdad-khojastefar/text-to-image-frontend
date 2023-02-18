@@ -3,7 +3,7 @@ import { Modal, Col, Row, Container, Image } from "react-bootstrap";
 import axios from "axios";
 import "../../assets/styles/modal.scss";
 //loader
-import loader from "../../assets/images/Eclipse-1s-200px.gif"
+import loader from "../../assets/images/Eclipse-1s-200px.gif";
 //icon
 import svg from "../../assets/icons/search-magnifier-outline-svgrepo-com.svg";
 import { getData } from "../../Services/api";
@@ -11,20 +11,24 @@ import { getData } from "../../Services/api";
 import { PictureContext } from "../../Context/PictureContextProvider";
 const PicModal = (props) => {
   const { text } = props;
-  const {picture,setPicture}=useContext(PictureContext)
-
+  const { picture, setPicture } = useContext(PictureContext);
 
   const [imageLink, setImageLink] = useState("");
 
   useEffect(() => {
-    const fetchAPi = async () => {
-      
-      console.log(picture)
-      setPicture(await getData(text));
-      console.log("connected");
+    const fetchApi =async () => {
+      console.log("PIC1: " + picture);
+      // getData(test).then((res) => {
+      //   console.log("result: " + res);
+      //   setPicture(res);
+      //   console.log("Picture" + " " + picture);
+      // });
+      await setPicture(getData(text));
+      // console.log("connected");
+      // !imageLink &&
     };
-    // !imageLink && 
-    fetchAPi();
+    fetchApi();
+    console.log("changed? " + picture);
   }, []);
   // console.log(newSearch);
   return (
@@ -45,7 +49,11 @@ const PicModal = (props) => {
               xs={{ order: "first", span: 12 }}
               lg={{ order: "last", span: 7 }}
             >
-              <Image className="searchedImage" fluid src={picture ? picture : loader } />
+              <Image
+                className="searchedImage"
+                fluid
+                src={picture ? picture : loader}
+              />
             </Col>
             <Col
               xs={12}
@@ -60,7 +68,6 @@ const PicModal = (props) => {
         </Container>
       </Modal.Body>
     </Modal>
-    
   );
 };
 
