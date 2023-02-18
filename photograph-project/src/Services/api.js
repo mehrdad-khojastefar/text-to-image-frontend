@@ -1,5 +1,15 @@
 import axios from "axios"
-export const getData=async ()=>{
-    const data= await axios.get("https://api.unsplash.com/photos/random")
-    .then((response)=>console.log(response.data))
+const ipsumLink="https://picsum.photos/600.jpg";
+export const getData=async (text)=>{
+    ////api from backend
+    // const Link= await axios.get(`https://picsum.photos/600`);
+    // console.log(Link.data);
+    // return Link.data;
+
+
+    ////test
+    return ipsumLink;
+
+    
+    
 }

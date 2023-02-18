@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 //React-bootstrap
 import { Col, Container, Row } from "react-bootstrap";
 //messages
@@ -12,6 +12,7 @@ import PicModal from "../Modal/PicModal";
 
 const MainPage = () => {
   const [searchvalue, setSearchvalue] = useState("");
+  const [apinput, setapiinput] = useState("");
   const [defaultvalue, setDefaultValue] = useState("");
   const [modalShow, setModalShow] = useState(false);
 
@@ -22,11 +23,17 @@ const MainPage = () => {
     if (event.key === "Enter") {
       await setSearchvalue(event.target.value);
       searchvalue && setModalShow(true);
-
+      console.log(apinput);
       event.target.value = "";
     }
   };
-  useEffect(() => {}, [searchvalue]);
+  useEffect(() => {
+    setapiinput(searchvalue);
+  }, [searchvalue]);
+  const setapichage = async (searchvalue) => {
+    await setapiinput(searchvalue);
+  };
+  const input = useRef(null);
 
   return (
     <Container className="main rounded-5 mb-5 p-5 position-relative">
@@ -34,12 +41,15 @@ const MainPage = () => {
         <Col xs={12} sm={12} md={8} lg={8} className="mt-md-3 ps-md-5 ">
           <span className="headerSpan position-relative">{headerSpan}</span>
           <Col
-           sm={12} xs={12} md={12} lg={9} xl={7}
+            sm={12}
+            xs={12}
+            md={12}
+            lg={9}
+            xl={7}
             className="headerWrapper mt-5 pt-2 pt-md-0  ps-2 position-relative"
             style={{ zIndex: "2" }}
           >
             <h1 className="header mt-5">{header}</h1>
-            
           </Col>
           <Col xs={12} md={12} lg={6} className="my-4 ps-3">
             <p className="position-relative mainText" style={{ zIndex: "2" }}>
@@ -53,6 +63,7 @@ const MainPage = () => {
             className="SearchInput position-relative rounded-pill  "
           >
             <input
+              ref={input}
               className="SearchInput"
               placeholder={SearchInPutPlaceHolder}
               type="search"
@@ -70,10 +81,11 @@ const MainPage = () => {
               // }
             />
             <button
-              onClick={ () => {
-                 searchvalue && setModalShow(true);
-                console.log(searchvalue);
-                setDefaultValue("")
+              onClick={() => {
+                input.current.value && setModalShow(true);
+                console.log(apinput);
+                setDefaultValue("");
+                input.current.value = "";
               }}
             >
               <img src={svg} alt="searchIcon" />
@@ -84,11 +96,12 @@ const MainPage = () => {
           <SideImages />
         </Col>
       </Row>
-      {setModalShow && (
+
+      {modalShow && (
         <PicModal
           show={modalShow}
           onHide={() => setModalShow(false)}
-          text={searchvalue}
+          text={apinput}
         />
       )}
     </Container>

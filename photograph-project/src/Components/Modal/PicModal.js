@@ -7,6 +7,7 @@ import duck from "../../assets/images/Duck-in-pond.jpg";
 
 //icon
 import svg from "../../assets/icons/search-magnifier-outline-svgrepo-com.svg";
+import { getData } from "../../Services/api";
 const PicModal = (props) => {
   const { text } = props;
   // const [newSearch, SetnewSearch] = useState(text);
@@ -15,20 +16,16 @@ const PicModal = (props) => {
 
   useEffect(() => {
     const fetchAPi = async () => {
-      const response = axios.get("");
-      setImageLink(response.data);
+      
+      setImageLink(await getData(text));
+      console.log("connected");
+      console.log(imageLink);
     };
+    // !imageLink && 
     fetchAPi();
-  }, []);
+  }, [text]);
   // console.log(newSearch);
-
-  const fetchAPi = async () => {
-    const response = axios.get("");
-  };
-  async function getText(text) {
-    const getTexed = await text;
-    return getTexed;
-  }
+console.log(imageLink)
   return (
     <Modal
       className="MainModal"
@@ -47,7 +44,7 @@ const PicModal = (props) => {
               xs={{ order: "first", span: 12 }}
               lg={{ order: "last", span: 7 }}
             >
-              <Image className="searchedImage" fluid src={duck} />
+              <Image className="searchedImage" fluid src={imageLink} />
             </Col>
             <Col
               xs={12}
@@ -62,6 +59,7 @@ const PicModal = (props) => {
         </Container>
       </Modal.Body>
     </Modal>
+    
   );
 };
 
