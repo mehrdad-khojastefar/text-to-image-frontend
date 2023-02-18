@@ -51,62 +51,90 @@ background: linear-gradient(360deg, $modal-bgc 0%, $modal-bgc2 100%, $modal-bgc3
         // left: -1px;
         margin: 0;
         height: 80vh;
+        padding-bottom: 20PX;
         // background: linear-gradient(360deg, hsla(187, 96%, 9%, 1) 0%, hsla(176, 36%, 38%, 1) 100%, hsla(177, 37%, 37%, 1) 100%);
        border-radius: 5px 0 0 5px; 
        //    border-radius: inherit;
-       .infoText{
-        color: #fff ;
-       }
-       .SearchInput{
-        z-index: 2;
-        height: 50px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        border-radius: 20px;
-        background-color: #fff;
+       overflow-y: auto;
+       @media screen and (max-width: 400px ){
+
+        padding: 10px 20px !important;
+    }
+       &::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+    }
     
-        input{
-            
-            background-color: #fff;
-            padding: 10px 5px 10px 30px;
-            overflow-x: scroll;
-            width: 92%;
-            height: 100%;
-            border: none;
-            outline: none;
+    &::-webkit-scrollbar-track {
+        border-radius: 8px;
+        background-color: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: #6363635a;
+    }
+       .infoText{
+        height: 100%;
+        color: #fff ;
+        font-size: 22px;
+        line-height: 32px;
+        @media screen and (max-width: 400px ){
+
+            font-size: 18px;
         }
-        &::-webkit-search-cancel-button{
+        // overflow:hidden;
+       }
+    //    .SearchInput{
+    //     z-index: 2;
+    //     height: 50px;
+    //     display: flex;
+    //     justify-content: flex-start;
+    //     align-items: center;
+    //     border-radius: 20px;
+    //     background-color: #fff;
+    
+    //     input{
+            
+    //         background-color: #fff;
+    //         padding: 10px 5px 10px 30px;
+    //         overflow-x: scroll;
+    //         width: 92%;
+    //         height: 100%;
+    //         border: none;
+    //         outline: none;
+    //     }
+    //     &::-webkit-search-cancel-button{
             
                 
-            cursor: pointer;
-        }
-        button{
-            margin-right: 2px;
-            background-color: $searchbutton-color;
-            border-radius: 50%;
-            width: 42px;
-            height: 42px;
-            border: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            &:focus-visible{
-                outline: none;
-            }
-        }
+    //         cursor: pointer;
+    //     }
+    //     button{
+    //         margin-right: 2px;
+    //         background-color: $searchbutton-color;
+    //         border-radius: 50%;
+    //         width: 42px;
+    //         height: 42px;
+    //         border: none;
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+    //         &:focus-visible{
+    //             outline: none;
+    //         }
+    //     }
         
-        @media (max-width: 450px) {
-            .main{
-                width: 90%;
-                margin: 0 10px ;
-                .header{
+    //     @media (max-width: 450px) {
+    //         .main{
+    //             width: 90%;
+    //             margin: 0 10px ;
+    //             .header{
                    
-                }
-            }
+    //             }
+    //         }
     
-        }
-    }
+    //     }
+    // }
     }
        .image-container{
         min-height: 300px;
@@ -131,14 +159,14 @@ background: linear-gradient(360deg, $modal-bgc 0%, $modal-bgc2 100%, $modal-bgc3
                .info{
                 //    background-color: green !important; 
                 height: 20vh; 
-                border-radius: 0 0 5px 5px;   
+                border-radius: 5px;   
                }
                .image-container{
                    height: 60vh;
-                   border-radius:5px 5px  0 0 ; 
+                   border-radius:5px; 
                    .searchedImage{
 
-                    border-radius:  5px 5px 0 0;
+                    border-radius:  5px ;
                     
                 }  
 

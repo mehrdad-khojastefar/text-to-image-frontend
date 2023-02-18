@@ -49,9 +49,13 @@ const PicModal = (props) => {
             >
               <Image className="searchedImage" fluid src={duck} />
             </Col>
-            <Col xs={12} lg={5} className="info ">
+            <Col
+              xs={12}
+              lg={5}
+              className="info px-5 py-3 d-flex justify-content-center align-item-center"
+            >
               <Col xs={12}>
-                <p className="infoText my-2 me-2">{`${text}`}</p>
+                <p className="infoText mb-2 me-2">{`${text}`}</p>
               </Col>
             </Col>
           </Row>
