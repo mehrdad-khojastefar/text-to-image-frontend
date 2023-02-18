@@ -12,18 +12,12 @@ import PicModal from "../Modal/PicModal";
 
 const MainPage = () => {
   const [searchvalue, setSearchvalue] = useState("");
-  const [modalShow, setModalShow] = useState();
+  const [defaultvalue, setDefaultValue] = useState("");
+  const [modalShow, setModalShow] = useState(false);
 
   const { headerSpan, header, MainPageText, SearchInPutPlaceHolder, MainLink } =
     messages;
   const header1 = header.split(" ");
-  const header1firstarray = header1[0].concat(" ", header1[1]);
-  const header1secondarray = header1[2].concat(
-    " ",
-    header1[3],
-    " ",
-    header1[4]
-  );
   const enterchangehandler = async (event) => {
     if (event.key === "Enter") {
       await setSearchvalue(event.target.value);
@@ -63,6 +57,7 @@ const MainPage = () => {
               placeholder={SearchInPutPlaceHolder}
               type="search"
               spellCheck="false"
+              defaultValue={defaultvalue}
               onChange={(e) => {
                 setSearchvalue(e.target.value);
               }}
@@ -75,9 +70,10 @@ const MainPage = () => {
               // }
             />
             <button
-              onClick={async () => {
-                (await searchvalue) && setModalShow(true);
+              onClick={ () => {
+                 searchvalue && setModalShow(true);
                 console.log(searchvalue);
+                setDefaultValue("")
               }}
             >
               <img src={svg} alt="searchIcon" />
