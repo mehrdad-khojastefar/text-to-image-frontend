@@ -1,36 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Modal, Col, Row, Container, Image } from "react-bootstrap";
-import axios from "axios";
 import "../../assets/styles/modal.scss";
-//loader
-import loader from "../../assets/images/Eclipse-1s-200px.gif";
-//icon
-import svg from "../../assets/icons/search-magnifier-outline-svgrepo-com.svg";
-import { getData } from "../../Services/api";
 //Context
 import { PictureContext } from "../../Context/PictureContextProvider";
 const PicModal = (props) => {
-  const { text } = props;
+  const { text, picturesent } = props;
   const { picture, setPicture } = useContext(PictureContext);
+  console.log(picture);
+  console.log(picturesent);
+  const [loaded, setLoaded] = useState(false);
 
-  const [imageLink, setImageLink] = useState("");
-
+  const handleLoad = () => {
+    setLoaded(true);
+  };
   useEffect(() => {
-    const fetchApi =async () => {
-      console.log("PIC1: " + picture);
-      // getData(test).then((res) => {
-      //   console.log("result: " + res);
-      //   setPicture(res);
-      //   console.log("Picture" + " " + picture);
-      // });
-      await setPicture(getData(text));
-      // console.log("connected");
-      // !imageLink &&
-    };
-    fetchApi();
-    console.log("changed? " + picture);
-  }, []);
-  // console.log(newSearch);
+    setPicture(picture);
+  }, [picture]);
   return (
     <Modal
       className="MainModal"
@@ -52,7 +37,8 @@ const PicModal = (props) => {
               <Image
                 className="searchedImage"
                 fluid
-                src={picture ? picture : loader}
+                src={picture}
+                onLoad={handleLoad}
               />
             </Col>
             <Col

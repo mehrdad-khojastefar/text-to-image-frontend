@@ -80,63 +80,15 @@ background: linear-gradient(360deg, $modal-bgc 0%, $modal-bgc2 100%, $modal-bgc3
         color: #fff ;
         font-size: 22px;
         line-height: 32px;
+        overflow-wrap: break-word ;
         
         @media screen and (max-width: 400px ){
 
             font-size: 18px;
         }
-        // overflow:hidden;
        }
-    //    .SearchInput{
-    //     z-index: 2;
-    //     height: 50px;
-    //     display: flex;
-    //     justify-content: flex-start;
-    //     align-items: center;
-    //     border-radius: 20px;
-    //     background-color: #fff;
-    
-    //     input{
-            
-    //         background-color: #fff;
-    //         padding: 10px 5px 10px 30px;
-    //         overflow-x: scroll;
-    //         width: 92%;
-    //         height: 100%;
-    //         border: none;
-    //         outline: none;
-    //     }
-    //     &::-webkit-search-cancel-button{
-            
-                
-    //         cursor: pointer;
-    //     }
-    //     button{
-    //         margin-right: 2px;
-    //         background-color: $searchbutton-color;
-    //         border-radius: 50%;
-    //         width: 42px;
-    //         height: 42px;
-    //         border: none;
-    //         display: flex;
-    //         justify-content: center;
-    //         align-items: center;
-    //         &:focus-visible{
-    //             outline: none;
-    //         }
-    //     }
-        
-    //     @media (max-width: 450px) {
-    //         .main{
-    //             width: 90%;
-    //             margin: 0 10px ;
-    //             .header{
-                   
-    //             }
-    //         }
-    
-    //     }
-    // }
+
+ 
     }
        .image-container{
         min-height: 300px;

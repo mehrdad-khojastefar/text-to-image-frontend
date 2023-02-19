@@ -11,7 +11,6 @@ import SideImages from "../SideImages/SideImages";
 import PicModal from "../Modal/PicModal";
 //Context
 import { PictureContext } from "../../Context/PictureContextProvider";
-
 const MainPage = () => {
   const [searchvalue, setSearchvalue] = useState("");
   const [apinput, setapiinput] = useState("");
@@ -21,21 +20,40 @@ const MainPage = () => {
   //Context
   const { setPicture, picture } = useContext(PictureContext);
 
-  const { headerSpan, header, MainPageText, SearchInPutPlaceHolder, MainLink } =
-    messages;
-  const header1 = header.split(" ");
+  const { headerSpan, header, MainPageText, SearchInPutPlaceHolder } = messages;
+  const dataFunction = () => {
+    let image;
+
+    fetch("http://23.100.15.178:5050/generate_image", {
+      method: "POST",
+      mode: "cors",
+      body: `prompt=${apinput}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }).then((res) => {
+      res
+        .blob()
+        .then((blobResponse) => {
+          image = blobResponse;
+          const urlCreator = window.URL || window.webkitURL;
+          setPicture(urlCreator.createObjectURL(image));
+        })
+        .catch((err) => {
+          console.log("blob failed " + err);
+        });
+    });
+  };
   const enterchangehandler = async (event) => {
     if (event.key === "Enter") {
-      await setSearchvalue(event.target.value);
-      searchvalue && setModalShow(true);
-      console.log(apinput);
-      event.target.value = "";
-      
+      input.current.value && setModalShow(true);
+      setDefaultValue("");
+      apinput && dataFunction();
+      input.current.value = "";
     }
   };
   useEffect(() => {
     setapiinput(searchvalue);
-    // setPicture("")
   }, [searchvalue, picture]);
   const input = useRef(null);
 
@@ -77,17 +95,13 @@ const MainPage = () => {
                 setSearchvalue(e.target.value);
               }}
               onKeyDown={enterchangehandler}
-              // if(event.key === 'Enter'){
-              //   setSearchvalue(event.target.value);
-              //   searchvalue && setModalShow(true);
-
-              //   event.target.value=""
-              // }
             />
             <button
               onClick={() => {
                 input.current.value && setModalShow(true);
-                console.log(apinput);
+                if (apinput) {
+                  dataFunction();
+                }
                 setDefaultValue("");
                 input.current.value = "";
               }}
@@ -95,23 +109,25 @@ const MainPage = () => {
               <img src={svg} alt="searchIcon" />
             </button>
           </Col>
+          <Col xs={12} className="my-4 ps-3">pending</Col>
         </Col>
         <Col xs={12} md={4} sm={12} className="mt-md-5 ps-md-5">
           <SideImages />
         </Col>
       </Row>
 
-      {modalShow && (
+      {picture && (
         <PicModal
           show={modalShow}
           onHide={() => {
             setModalShow(false);
             setPicture("");
-            setSearchvalue("")
-            console.log("hide");
-            console.log(picture);
+            setSearchvalue("");
+            // console.log("hide");
+            // console.log(picture);
           }}
           text={apinput}
+          picturesent={picture}
         />
       )}
     </Container>
