@@ -81,16 +81,16 @@ const MainPage = () => {
           >
             <h1 className="header mt-5">{header}</h1>
           </Col>
-          <Col xs={12} md={12} lg={6} className="my-4 ps-3">
+          {/* <Col xs={12} md={12} lg={6} className="my-4 ps-3">
             <p className="position-relative mainText" style={{ zIndex: "2" }}>
               {MainPageText}
             </p>
-          </Col>
+          </Col> */}
           <Col
             xs={12}
             md={12}
             lg={9}
-            className="SearchInput position-relative rounded-pill  "
+            className="SearchInput position-relative rounded-pill  mt-5"
           >
             <input
               ref={input}

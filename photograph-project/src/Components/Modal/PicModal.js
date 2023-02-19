@@ -44,7 +44,7 @@ const PicModal = (props) => {
             <Col
               xs={12}
               lg={5}
-              className="info px-5 py-3 d-flex justify-content-center align-item-center"
+              className="info px-5 py-4 d-flex justify-content-center align-item-center"
             >
               <Col xs={12}>
                 <p className="infoText mb-2 me-2">{`${text}`}</p>
