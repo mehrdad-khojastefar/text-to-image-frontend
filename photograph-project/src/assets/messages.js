@@ -1,7 +1,7 @@
 export const messages = {
-  headerSpan: "Photograph",
-  header: "Explore art around the World",
+  headerSpan: "Text To Image",
+  header: "Your marketing content at a glance",
   MainPageText: "Place Where amazing photo from great Photographer in the world",
-  SearchInPutPlaceHolder:"Search amazing Photo...",
+  SearchInPutPlaceHolder:"Generate your amazing photo...",
   MainLink:"Become Photographer"
 };

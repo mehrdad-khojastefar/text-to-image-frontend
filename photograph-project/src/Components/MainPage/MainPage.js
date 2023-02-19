@@ -5,8 +5,11 @@ import { Col, Container, Row } from "react-bootstrap";
 import { messages } from "../../assets/messages";
 //import css file
 import "../../assets/styles/MainPage.scss";
+//loader
+import loader from "../../assets/images/mainPageLoader.gif"
 //icon
 import svg from "../../assets/icons/search-magnifier-outline-svgrepo-com.svg";
+
 import SideImages from "../SideImages/SideImages";
 import PicModal from "../Modal/PicModal";
 //Context
@@ -16,6 +19,7 @@ const MainPage = () => {
   const [apinput, setapiinput] = useState("");
   const [defaultvalue, setDefaultValue] = useState("");
   const [modalShow, setModalShow] = useState(false);
+  const [Loader, setLoader] = useState(false);
 
   //Context
   const { setPicture, picture } = useContext(PictureContext);
@@ -48,8 +52,12 @@ const MainPage = () => {
     if (event.key === "Enter") {
       input.current.value && setModalShow(true);
       setDefaultValue("");
-      apinput && dataFunction();
-      input.current.value = "";
+      
+      if (apinput) {
+        setLoader(true)
+        dataFunction();
+      }      input.current.value = "";
+      
     }
   };
   useEffect(() => {
@@ -100,6 +108,7 @@ const MainPage = () => {
               onClick={() => {
                 input.current.value && setModalShow(true);
                 if (apinput) {
+                  setLoader(true)
                   dataFunction();
                 }
                 setDefaultValue("");
@@ -109,7 +118,13 @@ const MainPage = () => {
               <img src={svg} alt="searchIcon" />
             </button>
           </Col>
-          <Col xs={12} className="my-4 ps-3">pending</Col>
+          <Col xs={12} className="my-4 ps-3">
+            {Loader &&
+            <>
+              <span style={{color:"#a1a5a5"}}>Please wait </span>
+            <img src={loader}/>
+            </>}
+          </Col>
         </Col>
         <Col xs={12} md={4} sm={12} className="mt-md-5 ps-md-5">
           <SideImages />
@@ -123,6 +138,7 @@ const MainPage = () => {
             setModalShow(false);
             setPicture("");
             setSearchvalue("");
+            setLoader(false)
             // console.log("hide");
             // console.log(picture);
           }}
